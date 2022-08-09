@@ -15,7 +15,7 @@ q = int(sys.argv[4])
 rate = float(sys.argv[5])
 SNR1 = float(sys.argv[6])
 SNR2 = float(sys.argv[7])
-iteration = 2
+iteration = 20
 curpath = "/home/lg689/project/SPACOresults"
 
 comparison_res_list = []
