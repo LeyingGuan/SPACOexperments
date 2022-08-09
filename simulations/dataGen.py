@@ -45,7 +45,7 @@ def dataGen(I, T, J, q, rate, s=3, K0 = 3, SNR1 = 1.0, SNR2 = 3.0):
     return Xcomplete, signal_complete , Xobs, Obs, T0, Phi0, V0, U, PhiV0, Z, beta
 
 Is = [100]
-Js = [500]
+Js = [10, 500]
 T = 30
 qs = [100]
 rates = [1.0, 0.5, 0.1]
