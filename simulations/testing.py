@@ -71,8 +71,8 @@ for it in np.arange(iteration):
                                           random_state=2022)
     comparison_res_list[it].spaco_fit.cross_validation_train(train_ids,
                                      test_ids,
-                                     max_iter=5,
-                                     min_iter=5,
+                                     max_iter=10,
+                                     min_iter=10,
                                      tol=1e-3,
                                      trace=True)
     spaco_fit = copy.deepcopy(comparison_res_list[it].spaco_fit)
