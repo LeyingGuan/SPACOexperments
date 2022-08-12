@@ -3,11 +3,10 @@ import numpy as np
 import sys
 import os
 import pickle
+import importlib
+importlib.reload(spaco)
 
-# I = 100; T = 30; q = 100;J = 10;SNR1 = 1.0;SNR2 = 5.0;rate = 0.1
-# curpath = '/home/lg689/project/SPACOresults'
-# it = 0
-
+#I = 100; T = 30; q = 100;J = 10;SNR1 = 1.0;SNR2 = 3.0;rate = 0.1
 I = int(sys.argv[1])
 T = int(sys.argv[2])
 J = int(sys.argv[3])
@@ -52,7 +51,7 @@ for it in np.arange(iteration):
     comparison_res_list[it].X = None
     comparison_res_list[it].O = None
     comparison_res_list[it].signal = None
-    comparison_res_list[it].spaco_fit.intermediants = None
+    comparison_res_list[it].spaco_fit.intermediantes= None
     comparison_res_list[it].spaco_fit.O = None
     comparison_res_list[it].spaco_fit.X = None
     comparison_res_list[it].spaco_fit.X0 = None
