@@ -69,9 +69,10 @@ for it in np.arange(iteration):
     comparison_res_list[it].spaco_fit.X0 = copy.deepcopy(tmp_obj.X0)
     train_ids, test_ids = spaco.cutfoldid(n=I, nfolds=5,
                                           random_state=2022)
+    cv_iter = 20
     comparison_res_list[it].spaco_fit.cross_validation_train(train_ids,
                                      test_ids,
-                                     max_iter=10,
+                                     max_iter=cv_iter,
                                      min_iter=10,
                                      tol=1e-3,
                                      trace=True)
