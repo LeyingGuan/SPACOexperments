@@ -122,7 +122,7 @@ result_table_SPACO_null.index = columns_response
 result_table_response = pd.concat([result_table_SPACO.copy(), result_table_SPACO_null.copy()], axis=0, keys=["SPACO", "SPACO-"])
 result_table_response=result_table_response.round({'C1cor': 2, 'C2cor': 2,'C3cor': 2, 'C4cor': 2})
 
-for j in np.arange(4):
+for j in np.arange(rank):
     result_table_response['C'+str(j+1)+'pval'] = result_table_response['C'+str(j+1)+'pval'].apply(
         lambda val: '%.1E' % val)
 
