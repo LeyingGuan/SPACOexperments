@@ -27,14 +27,9 @@ negliks = spaco.rank_selection_function(X = X, O =O, Z =Z,
 
 I = X.shape[0]
 means = negliks.mean(axis = 0)
-means_std  = means+negliks.std(axis = 0)/np.sqrt(I)*0.5
 means=means[~np.isnan(means)]
-means_std =means_std[~np.isnan(means_std)]
 idx_min = np.argmin(means)
 rank_min = ranks[idx_min]
-rank_std= ranks[np.where(means<=means_std[idx_min])][0]
-print(rank_min)
-print(rank_std)
 rank = rank_min
 
 data_obj = dict(X=X, O=O, Z=Z,
@@ -106,7 +101,7 @@ result_table_SPACO.index = columns_response
 mu0 = spacoNULL_fit.mu.copy()
 tmp_align = scipy.stats.spearmanr(mu, b=mu0, axis=0, nan_policy='omit').correlation
 tmp_align=tmp_align[rank:,:rank]
-idx_align = [None]*4
+idx_align = [None]*rank
 for j in np.arange(rank):
     idx_align[j] = np.argmax(tmp_align[:,j])
 
