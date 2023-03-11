@@ -24,6 +24,10 @@ python reconstruction_compare.py I T J q rate SNR1 SNR2 20
 ```ruby
 ```
 #### Summarize and plot the results
+Summarize the results evaluating reconstruction qualities: (1) Figure 2 (tensor reconstruction); (2) Figure 3 (reconstruction of U, SPACO vs SPACO-); (3) Figure S? (random initialization vs proposed initialization); (4) Figure S? (tensor reconstruction, missing entries only)
+```ruby
+python summary.py
+```
 
 
 
