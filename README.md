@@ -6,7 +6,7 @@ curpath be the directory path for saving running and save the results, and shoul
 python dataGen.py
 ```
 Simulated data are saved under curpath+/data/.
-### Benchmarking at the true rank
+### 1. Benchmarking at the true rank
 I: num of subjects;
 T: num of time points;
 J: dimnesion of features;
@@ -28,7 +28,7 @@ Summarize the results evaluating reconstruction qualities: (1) Figure 2 (tensor 
 ```ruby
 python summary.py
 ```
-### Evaluation on rank estimation
+### 2. Evaluation on rank estimation
 ```ruby
 
 ```
