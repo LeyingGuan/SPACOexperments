@@ -16,9 +16,15 @@ SNR1: signal-to-noise ratio in features;
 SNR2: signal-to-noise ratio in auxiliary covariates;
 
 Please modify the default curpath in reconstruction_compare.py to your own curpath. The last argument is the number of repetitions for each setup.
+#### Run comparison for one setting
 ```ruby
 python reconstruction_compare.py I T J q rate SNR1 SNR2 20
 ```
+#### Run all settings in bulk
+```ruby
+```
+#### Summarize and plot the results
+
 
 
 
