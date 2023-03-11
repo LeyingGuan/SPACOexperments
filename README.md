@@ -7,8 +7,7 @@ python dataGen.py
 ```
 Simulated data are saved under curpath+/data/.
 ### Benchmarking at the true rank
-I: num of subjects
-
+I: num of subjects\\
 T: num of time points
 
 J: dimnesion of features
