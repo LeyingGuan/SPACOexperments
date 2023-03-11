@@ -430,41 +430,6 @@ plt.close(fig)
 
 
 
-
-
-
-
-# tmp= sns.stripplot(ax = axes[0,0], x='rate',
-#             y='correlation',
-#             hue='method',
-#             data=construction_corDF1,
-#             dodge=True, jitter=True,marker='o');
-#
-# how to remove redundant legends in Python
-# Let us first get legend information from the plot object
-#handles, labels =tmp.get_legend_handles_labels()
-# specify just one legend
-
-
-
-
-# for it in np.arange(len(comparison_res_list)):
-#     comparison_res = comparison_res_list[it]
-#     construction_cor_list['Raw'].append(comparison_res.eval_dict['empirical']['reconstruct_cor_full'])
-#     construction_cor_list_miss['Raw'].append(comparison_res.eval_dict['empirical']['reconstruct_cor_miss'])
-#     construction_cor_list_miss['SNR1'].append(SNR1)
-#     construction_cor_list_miss['SNR2'].append(SNR2)
-#     construction_cor_list_miss['J'].append(J)
-#     construction_cor_list_miss['rate'].append(rate)
-#     construction_cor_list['SNR1'].append(SNR1)
-#     construction_cor_list['SNR2'].append(SNR2)
-#     construction_cor_list['J'].append(J)
-#     construction_cor_list['rate'].append(rate)
-#     for method in comparison_res.eval_dict.keys():
-#         if method != 'empirical':
-#             construction_cor_list[method].append(comparison_res.eval_dict[method].alignment['reconstruct_cor_full'])
-#             construction_cor_list_miss[method].append(comparison_res.eval_dict[method].alignment['reconstruct_cor_miss'])
-
 method_names_plot = ['spaco', 'spaco_', 'SupCP_functional','cp']
 construction_corDF1 = pd.melt(construction_corMissDF,
         id_vars= ["J", "SNR1", "SNR2", "rate"],
