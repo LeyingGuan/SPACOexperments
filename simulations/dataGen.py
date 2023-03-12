@@ -51,7 +51,7 @@ qs = [100]
 rates = [1.0, 0.5, 0.1]
 SNR1s = [1.0,  5.0]
 SNR2s = [0.0, 1.0, 10.0]
-iteration = 10
+iteration = 20
 
 np.random.seed(1)
 seeds = np.zeros(100, dtype = int)
