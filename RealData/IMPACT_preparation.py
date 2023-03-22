@@ -26,6 +26,17 @@ Ximmune_patient_check = X_patient_check[
 idx_feature = np.where(np.mean(np.isnan(Ximmune_patient_check),
                        axis=0) <= 0.2)[0]
 
+mm = np.mean(np.isnan(Ximmune_patient_check),axis=0)
+plt.hist(mm, bins=30)
+
+# Add labels and title
+plt.xlabel('missing rate')
+plt.ylabel('Count')
+plt.title('Histogram')
+plt.savefig('IMPACTmissing.png')
+# Show the plot
+
+
 Xuse = Xcomplete
 ##data preparation
 tmp = Xuse['sex']
