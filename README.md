@@ -21,7 +21,7 @@ Please modify the default curpath in reconstruction_compare.py to your own curpa
 ```ruby
 python simcodepath/reconstruction_compare.py I T J q rate SNR1 SNR2 20
 ```
-#### Summarize and plot the results
+#### Summarize and plot the results (all settings)
 Summarize the results evaluating reconstruction qualities: (1) Figure 2 (tensor reconstruction); (2) Figure 3 (reconstruction of U, SPACO vs SPACO-); (2) Figure 3 (reconstruction of Phi, SPACO vs SupCP); (3) Figure S? (random initialization vs proposed initialization); (4) Figure S? (tensor reconstruction, missing entries only)
 ```ruby
 python simcodepath/summary.py
@@ -31,13 +31,17 @@ python simcodepath/summary.py
 ```ruby
 python simcodepath/rank_selection.py  I  T J q rate SNR1 SNR2
 ```
-#### Summarize and plot the results
+#### Summarize and plot the results (all settings)
 ```ruby
 python simcodepath/summary_rank.py
 ```
 ### 3. Evaluation on hypothesis testing
 ```ruby
-python simcodepath/rank_selection.py  I  T J q rate SNR1 SNR2
+python simcodepath/testing.py  I  T J q rate SNR1 SNR2
+```
+#### Summarize and plot the results (all settings)
+```{ruby}
+pyyhon simcodepath/summary_rank
 ```
 ## Real data experiments
 ### Data preparation
