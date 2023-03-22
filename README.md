@@ -22,7 +22,6 @@ The last argument is the number of repetitions for each setup and results are sa
 python simcodepath/reconstruction_compare.py I T J q rate SNR1 SNR2 20
 ```
 #### Summarize and plot the results (all settings)
-Summarize the results evaluating reconstruction qualities: (1) Figure 2 (tensor reconstruction); (2) Figure 3 (reconstruction of U, SPACO vs SPACO-); (2) Figure 3 (reconstruction of Phi, SPACO vs SupCP); (3) Figure S? (random initialization vs proposed initialization); (4) Figure S? (tensor reconstruction, missing entries only)
 ```ruby
 python simcodepath/summary.py
 ```
