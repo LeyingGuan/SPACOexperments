@@ -34,9 +34,11 @@ python simcodepath/summary.py
 
 ## Real data experiments
 ### Data preparation
+We reorganize the data to (1) separate the immune profiles, risks and clinical responses, (2) remove immune profiles with high missinness (>20%) and perform mofa imputation for the remaining, and (3) generate randomized risk variables.
 ```ruby
-
+python IMPACT_preparation.py
 ```
+###
 
 
 
