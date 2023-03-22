@@ -21,28 +21,33 @@ Please modify the default curpath in reconstruction_compare.py to your own curpa
 ```ruby
 python simcodepath/reconstruction_compare.py I T J q rate SNR1 SNR2 20
 ```
-#### Run all settings in bulk
-```ruby
-```
 #### Summarize and plot the results
 Summarize the results evaluating reconstruction qualities: (1) Figure 2 (tensor reconstruction); (2) Figure 3 (reconstruction of U, SPACO vs SPACO-); (2) Figure 3 (reconstruction of Phi, SPACO vs SupCP); (3) Figure S? (random initialization vs proposed initialization); (4) Figure S? (tensor reconstruction, missing entries only)
 ```ruby
 python simcodepath/summary.py
 ```
 ### 2. Evaluation on rank estimation
+#### Run rank selection for one setting
 ```ruby
 python simcodepath/rank_selection.py  I  T J q rate SNR1 SNR2
 ```
-
+#### Summarize and plot the results
+```ruby
+python simcodepath/summary_rank.py
+```
+### 3. Evaluation on hypothesis testing
+```ruby
+python simcodepath/rank_selection.py  I  T J q rate SNR1 SNR2
+```
 ## Real data experiments
 ### Data preparation
 We reorganize the data to (1) separate the immune profiles, risks and clinical responses, (2) remove immune profiles with high missinness (>20%) and perform mofa imputation for the remaining, and (3) generate randomized risk variables.
 ```ruby
-python IMPACT_preparation.py
+python readdata_codepath/IMPACT_preparation.py
 ```
 ###SPACO and SPACO- on IMPACT data
 ```ruby
-python IMPACT_SPACOrun.py
+python readdata_codepath/IMPACT_SPACOrun.py
 ```
 
 
