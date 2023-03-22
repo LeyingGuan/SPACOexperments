@@ -46,14 +46,15 @@ python simcodepath/testing.py  I  T J q rate SNR1 SNR2
 pyyhon simcodepath/summary_rank
 ```
 ## Real data experiments
+Please run real data experiments under SPACOexperiments.
 ### Data preparation
 We reorganize the data to (1) separate the immune profiles, risks and clinical responses, (2) remove immune profiles with high missinness (>20%) and perform mofa imputation for the remaining, and (3) generate randomized risk variables.
 ```ruby
-python IMPACT_preparation.py
+python RealData/IMPACT_preparation.py
 ```
 ###SPACO and SPACO- on IMPACT data
 ```ruby
-python IMPACT_SPACOrun.py
+python RealData/IMPACT_SPACOrun.py
 ```
 
 
