@@ -38,7 +38,11 @@ We reorganize the data to (1) separate the immune profiles, risks and clinical r
 ```ruby
 python IMPACT_preparation.py
 ```
-###
+###SPACO and SPACO- on IMPACT data
+```{ruby}
+python IMPACT_SPACOrun.py
+```
+
 
 
 
