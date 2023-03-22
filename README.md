@@ -41,7 +41,7 @@ results are saved under Simulated data are saved under curpath+/results/test/
 python simcodepath/testing.py  I  T J q rate SNR1 SNR2
 ```
 #### Summarize and plot the results (all settings)
-```{ruby}
+```ruby
 pyyhon simcodepath/summary_rank
 ```
 ## Real data experiments
