@@ -7,6 +7,7 @@ import pickle
 import matplotlib.pyplot as plt
 from os.path import exists
 from matplotlib import patches as mpatches
+from matplotlib.colors import LinearSegmentedColormap
 
 file = "RealData/processed_IMPACTdata.npz"
 data = np.load(file, allow_pickle = True)
@@ -32,6 +33,7 @@ idx_min = np.argmin(means)
 rank_min = ranks[idx_min]
 rank = rank_min
 
+print("selected rank = "+str(rank))
 spaco.seed_everything(seed=2023)
 data_obj = dict(X=X, O=O, Z=Z,
                 time_stamps=T1, rank=rank)
@@ -82,7 +84,7 @@ A = scipy.stats.spearmanr(a = spaco_fit.mu.copy(), b=spacoNULL_fit.mu.copy(), ax
 df = pd.DataFrame(np.hstack([spaco_fit.mu.copy(),spacoNULL_fit.mu.copy()]))
 df.columns = pd.MultiIndex.from_tuples((('spaco', "C1"), ('spaco', "C2"), ('spaco', "C3"),('spaco-', "C1"), ('spaco-', "C2"), ('spaco-', "C3")))
 
-df.columns.set_levels(['spaco','spaco','spaco', 'spaco-','spaco-','spaco-'],level=0,inplace=True)
+#df.columns.set_levels(['spaco','spaco','spaco', 'spaco-','spaco-','spaco-'],level=0,inplace=True)
 
 corr = A.correlation
 corr = pd.DataFrame(corr)
@@ -143,23 +145,46 @@ A3 = scipy.stats.spearmanr(a =Z[:,[2,7]], b=Y, axis=0, nan_policy='omit')
 corr3 = A3.correlation[:2,2:]
 corr3 = pd.DataFrame(corr3, columns = columns_response, index = list(np.array(columns_covariate)[[2,7]]))
 corr3 = pd.DataFrame.transpose(corr3)
-from matplotlib.colors import ListedColormap
 
+import matplotlib as mpl
+#mpl.style.use('seaborn-v0_8')
 fig, axs = plt.subplots(1, 3, figsize=(25, 11), gridspec_kw={'width_ratios': [1.5, 1.2, .7]})
 g1 = sns.heatmap( corr, ax = axs[0],annot=True,fmt='.3f',cmap="Reds", annot_kws={'size': 18})
 
 axs[0].set_yticklabels(axs[0].get_yticklabels(), rotation=0, fontsize=20)
 axs[0].set_xticklabels(axs[0].get_xticklabels(), rotation=30, fontsize=20)
 
+cmap2 = LinearSegmentedColormap.from_list('custom', ['indigo', 'white', 'maroon'], N=256)
+ax_sns =sns.heatmap(corr2_test[['C2(spaco)','C2(spaco-)']], ax = axs[1], annot=True,fmt='.3f', cmap=cmap2, annot_kws={'size': 18},
+            linewidths=1,linecolor='k', vmin = -0.5, vmax = 0.5, cbar=False)
 
-sns.heatmap(corr2_test, ax = axs[1], annot=True,fmt='.3f', cbar=False,
-            cmap=ListedColormap(["grey"]), annot_kws={'size': 18},
-            linewidths=1,linecolor='k')
+# ax_sns = sns.heatmap(corr2_test, ax = axs[1], annot=True,fmt='.3f', cmap=cmap2, annot_kws={'size': 18},
+#             linewidths=1,linecolor='k', vmin = -0.5, vmax = 0.5)
+
 axs[1].set_yticklabels(axs[1].get_yticklabels(), rotation=0, fontsize=20)
 axs[1].set_xticklabels(axs[1].get_xticklabels(), rotation=30, fontsize=20)
 
+pvalues = corr2_test['improve_pval']
+# Add p-values to the right of the corresponding rows
+font_properties = {'fontsize': 18} #, 'fontweight': 'bold'}
+for i, p_value in enumerate(pvalues):
+    ax_sns.text(-0.3, i + 0.7, f'({round(p_value, 3)})', va='center', fontdict=font_properties)
+
+# Now we'll add a colorbar manually.
+# We define its position as [left, bottom, width, height] in the figure coordinate system
+# Adjust these values to move the colorbar.
+cbar_ax = fig.add_axes([0.77, 0.15, 0.02, 0.7])
+
+# Add the colorbar to the figure
+fig.colorbar(axs[1].collections[0], cax=cbar_ax, orientation='vertical')
+
+# sns.heatmap(corr2_test, ax = axs[1], annot=True,fmt='.3f', cbar=False,
+#             cmap=ListedColormap(["grey"]), annot_kws={'size': 18},
+#             linewidths=1,linecolor='k')
+
+
 g3= sns.heatmap(corr3, ax = axs[2], annot=True,fmt='.3f', cbar=False,
-            cmap=ListedColormap(["grey"]), annot_kws={'size': 18},
+            cmap=cmap2, annot_kws={'size': 18}, vmin = -0.5, vmax = 0.5,
             linewidths=1,linecolor='k',yticklabels=False)
 axs[2].set_xticklabels(axs[2].get_xticklabels(), rotation=30, fontsize=20)
 fig.subplots_adjust(left=0.07, right=0.98, wspace = .28)
@@ -168,6 +193,7 @@ axs[1].set_title("B", loc="left", fontsize=28, fontweight='bold', pad=10)
 axs[2].set_title("C", loc="left", fontsize=28, fontweight='bold', pad=10)
 #fig.show()
 curpath = '/Users/lg689/Desktop/SPACOexperments'
+#FIG_file = curpath + '/RealData/estimation_response.png'
 FIG_file = curpath + '/RealData/estimation_response.png'
 fig.savefig(FIG_file)
 plt.close(fig)
